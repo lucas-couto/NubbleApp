@@ -3,13 +3,13 @@ import {ThemeProvider} from '@shopify/restyle';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {theme} from './src/theme/theme';
-import {SignupScreen} from './src/screens/auth/SignupScreen/SignupScreen';
+import {Router} from './src/routes/Routes';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <SignupScreen />
+        <Router />
       </ThemeProvider>
     </SafeAreaProvider>
   );

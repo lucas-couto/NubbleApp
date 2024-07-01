@@ -4,8 +4,21 @@ import {Screen} from '../../../components/Screen/Screen';
 import {Button} from '../../../components/Button/Button';
 import {TextInput} from '../../../components/TextInput/TextInput';
 import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
+import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
 
 export function SignupScreen() {
+  const {reset} = useResetNavigationSuccess();
+  function submitForm() {
+    reset({
+      title: 'Sua conta foi criada com sucesso!',
+      description: 'Agora é so fazer login na nossa plataforma!',
+      icon: {
+        name: 'checkRound',
+        color: 'greenSuccess',
+      },
+    });
+  }
+
   return (
     <Screen canGoBack scrollable>
       <Text preset="headingLarge" mb="s32">
@@ -27,7 +40,7 @@ export function SignupScreen() {
         boxProps={{mb: 's48'}}
         placeholder="Digite sua senha"
       />
-      <Button title="Criar uma conta" />
+      <Button title="Criar uma conta" onPress={submitForm} />
     </Screen>
   );
 }
