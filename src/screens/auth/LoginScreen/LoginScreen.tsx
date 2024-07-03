@@ -1,17 +1,13 @@
 import React from 'react';
 import {Alert} from 'react-native';
-import {useForm} from 'react-hook-form';
+
 import {zodResolver} from '@hookform/resolvers/zod';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {useForm} from 'react-hook-form';
 
-import {
-  Text,
-  Button,
-  Screen,
-  FormTextInput,
-  FormPasswordInput,
-} from '@components';
+import {Text, Button, Screen, FormTextInput, FormPasswordInput} from '@components';
 import {RootStackParamList} from '@routes';
+
 import {LoginSchema, loginSchema} from './loginSchema';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
@@ -46,38 +42,13 @@ export function LoginScreen({navigation}: ScreenProps) {
       <Text preset="paragraphLarge" mb="s40">
         Digite seu e-mail e senha para entrar
       </Text>
-      <FormTextInput
-        control={control}
-        name="email"
-        label="E-mail"
-        boxProps={{mb: 's20'}}
-        placeholder="Digite seu e-mail"
-      />
-      <FormPasswordInput
-        control={control}
-        name="password"
-        label="Senha"
-        boxProps={{mb: 's10'}}
-        placeholder="Digite sua senha"
-      />
-      <Text
-        onPress={navigateToForgotPasswordScreen}
-        color="primary"
-        preset="paragraphSmall">
+      <FormTextInput control={control} name="email" label="E-mail" boxProps={{mb: 's20'}} placeholder="Digite seu e-mail" />
+      <FormPasswordInput control={control} name="password" label="Senha" boxProps={{mb: 's10'}} placeholder="Digite sua senha" />
+      <Text onPress={navigateToForgotPasswordScreen} color="primary" preset="paragraphSmall">
         Esqueci minha senha
       </Text>
-      <Button
-        disabled={!formState.isValid}
-        mt="s48"
-        title="Entrar"
-        onPress={handleSubmit(submitForm)}
-      />
-      <Button
-        mt="s12"
-        onPress={navigateToSignupScreen}
-        preset="outline"
-        title="Criar uma conta"
-      />
+      <Button disabled={!formState.isValid} mt="s48" title="Entrar" onPress={handleSubmit(submitForm)} />
+      <Button mt="s12" onPress={navigateToSignupScreen} preset="outline" title="Criar uma conta" />
     </Screen>
   );
 }

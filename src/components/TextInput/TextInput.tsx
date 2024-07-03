@@ -1,13 +1,9 @@
 import React, {useRef} from 'react';
-import {
-  Pressable,
-  TextInput as RNTextInput,
-  TextInputProps as RNTextInputProps,
-  TextStyle,
-} from 'react-native';
+import {Pressable, TextInput as RNTextInput, TextInputProps as RNTextInputProps, TextStyle} from 'react-native';
+
+import {useAppTheme} from '../../hooks/useAppTheme';
 import {Box, BoxProps} from '../Box/Box';
 import {$fontFamily, $fontSizes, Text} from '../Text/Text';
-import {useAppTheme} from '../../hooks/useAppTheme';
 
 export interface TextInputProps extends RNTextInputProps {
   label: string;
@@ -16,13 +12,7 @@ export interface TextInputProps extends RNTextInputProps {
   boxProps?: BoxProps;
 }
 
-export function TextInput({
-  label,
-  errorMessage,
-  RightComponent,
-  boxProps,
-  ...rnTextInputProps
-}: TextInputProps) {
+export function TextInput({label, errorMessage, RightComponent, boxProps, ...rnTextInputProps}: TextInputProps) {
   const {colors} = useAppTheme();
   const inputRef = useRef<RNTextInput>(null);
 
@@ -44,12 +34,7 @@ export function TextInput({
       <Box>
         <Text marginBottom="s4">{label}</Text>
         <Box {...$textInputContainer}>
-          <RNTextInput
-            ref={inputRef}
-            placeholderTextColor={colors.gray2}
-            style={$textInputStyle}
-            {...rnTextInputProps}
-          />
+          <RNTextInput ref={inputRef} placeholderTextColor={colors.gray2} style={$textInputStyle} {...rnTextInputProps} />
           {RightComponent && (
             <Box justifyContent="center" ml="s16">
               {RightComponent}
