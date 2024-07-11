@@ -3,7 +3,13 @@ import React from 'react';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 
-import {Text, Screen, Button, FormTextInput, FormPasswordInput} from '@components';
+import {
+  Text,
+  Screen,
+  Button,
+  FormTextInput,
+  FormPasswordInput,
+} from '@components';
 import {useResetNavigationSuccess} from '@hooks';
 
 import {SignUpSchema, signUpSchema} from './signUpSchema';
@@ -36,11 +42,39 @@ export function SignupScreen() {
       <Text preset="headingLarge" mb="s32">
         Criar uma conta
       </Text>
-      <FormTextInput control={control} name="username" placeholder="@" label="Seu username" boxProps={{mb: 's20'}} />
-      <FormTextInput control={control} name="fullName" label="Nome completo" boxProps={{mb: 's20'}} placeholder="Digite seu nome completo" />
-      <FormTextInput control={control} name="email" label="E-mail" boxProps={{mb: 's20'}} placeholder="Digite seu e-mail" />
-      <FormPasswordInput control={control} name="email" label="Senha" boxProps={{mb: 's48'}} placeholder="Digite sua senha" />
-      <Button disabled={!formState.isValid} title="Criar uma conta" onPress={handleSubmit(submitForm)} />
+      <FormTextInput
+        control={control}
+        name="username"
+        placeholder="@"
+        label="Seu username"
+        boxProps={{mb: 's20'}}
+      />
+      <FormTextInput
+        control={control}
+        name="fullName"
+        label="Nome completo"
+        boxProps={{mb: 's20'}}
+        placeholder="Digite seu nome completo"
+      />
+      <FormTextInput
+        control={control}
+        name="email"
+        label="E-mail"
+        boxProps={{mb: 's20'}}
+        placeholder="Digite seu e-mail"
+      />
+      <FormPasswordInput
+        control={control}
+        name="email"
+        label="Senha"
+        boxProps={{mb: 's48'}}
+        placeholder="Digite sua senha"
+      />
+      <Button
+        disabled={!formState.isValid}
+        title="Criar uma conta"
+        onPress={handleSubmit(submitForm)}
+      />
     </Screen>
   );
 }

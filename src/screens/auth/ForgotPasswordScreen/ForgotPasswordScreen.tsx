@@ -6,7 +6,10 @@ import {useForm} from 'react-hook-form';
 import {Text, Button, Screen, FormTextInput} from '@components';
 import {useResetNavigationSuccess} from '@hooks';
 
-import {ForgotPasswordSchema, forgotPasswordSchema} from './forgotPasswordSchema';
+import {
+  ForgotPasswordSchema,
+  forgotPasswordSchema,
+} from './forgotPasswordSchema';
 
 export function ForgotPasswordScreen() {
   const {reset} = useResetNavigationSuccess();
@@ -22,7 +25,8 @@ export function ForgotPasswordScreen() {
   function submitForm() {
     reset({
       title: 'Enviamos as intruções para seu e-mail',
-      description: 'Clique no link enviado no seu e-mail para recuperar sua senha',
+      description:
+        'Clique no link enviado no seu e-mail para recuperar sua senha',
       icon: {
         name: 'messageRound',
         color: 'primary',
@@ -38,8 +42,18 @@ export function ForgotPasswordScreen() {
       <Text preset="paragraphLarge" mb="s32">
         Digite seu e-mail e enviaremos as instruções para redefinição de senha.
       </Text>
-      <FormTextInput control={control} name="email" label="E-mail" boxProps={{mb: 's40'}} placeholder="Digite seu e-mail" />
-      <Button disabled={!formState.isValid} onPress={handleSubmit(submitForm)} title="Recuperar senha" />
+      <FormTextInput
+        control={control}
+        name="email"
+        label="E-mail"
+        boxProps={{mb: 's40'}}
+        placeholder="Digite seu e-mail"
+      />
+      <Button
+        disabled={!formState.isValid}
+        onPress={handleSubmit(submitForm)}
+        title="Recuperar senha"
+      />
     </Screen>
   );
 }

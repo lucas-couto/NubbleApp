@@ -15,19 +15,39 @@ export interface TextProps extends SRTextProps {
   semiBold?: boolean;
 }
 
-export function Text({children, preset = 'paragraphMedium', style, bold, italic, semiBold, ...rest}: TextProps) {
+export function Text({
+  children,
+  preset = 'paragraphMedium',
+  style,
+  bold,
+  italic,
+  semiBold,
+  ...rest
+}: TextProps) {
   const fontStyle = $fontSizes[preset];
   const fontFamily = getFontFamily(preset, bold, italic, semiBold);
 
   return (
-    <SRText color="backgroundContrast" style={[style, fontStyle, {fontFamily}]} {...rest}>
+    <SRText
+      color="backgroundContrast"
+      style={[style, fontStyle, {fontFamily}]}
+      {...rest}>
       {children}
     </SRText>
   );
 }
 
-function getFontFamily(preset: TextVariants, bold?: boolean, italic?: boolean, semiBold?: boolean) {
-  if (preset === 'headingSmall' || preset === 'headingMedium' || preset === 'headingLarge') {
+function getFontFamily(
+  preset: TextVariants,
+  bold?: boolean,
+  italic?: boolean,
+  semiBold?: boolean,
+) {
+  if (
+    preset === 'headingSmall' ||
+    preset === 'headingMedium' ||
+    preset === 'headingLarge'
+  ) {
     return italic ? $fontFamily.boldItalic : $fontFamily.bold;
   }
 
@@ -47,7 +67,15 @@ function getFontFamily(preset: TextVariants, bold?: boolean, italic?: boolean, s
   }
 }
 
-type TextVariants = 'headingLarge' | 'headingMedium' | 'headingSmall' | 'paragraphLarge' | 'paragraphMedium' | 'paragraphSmall' | 'paragraphCaption' | 'paragraphCaptionSmall';
+type TextVariants =
+  | 'headingLarge'
+  | 'headingMedium'
+  | 'headingSmall'
+  | 'paragraphLarge'
+  | 'paragraphMedium'
+  | 'paragraphSmall'
+  | 'paragraphCaption'
+  | 'paragraphCaptionSmall';
 
 export const $fontSizes: Record<TextVariants, TextStyle> = {
   headingLarge: {fontSize: 32, lineHeight: 38.4},

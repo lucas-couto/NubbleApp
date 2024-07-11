@@ -17,14 +17,20 @@ interface ScreenProps extends PropsWithChildren {
   scrollable?: boolean;
 }
 
-export function Screen({children, canGoBack = false, scrollable = false}: ScreenProps) {
+export function Screen({
+  children,
+  canGoBack = false,
+  scrollable = false,
+}: ScreenProps) {
   const {goBack} = useNavigation();
   const {top, bottom} = useAppSafeArea();
   const {colors} = useAppTheme();
 
   const Container = scrollable ? ScrollViewContainer : ViewContainer;
   return (
-    <KeyboardAvoidingView style={{flex: 1}} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <Container backgroundColor={colors.background}>
         <Box
           paddingHorizontal="s24"
@@ -33,7 +39,12 @@ export function Screen({children, canGoBack = false, scrollable = false}: Screen
             paddingBottom: bottom,
           }}>
           {canGoBack && (
-            <TouchableOpacityBox mb="s24" flexDirection="row" alignItems="center" onPress={goBack} gap="s8">
+            <TouchableOpacityBox
+              mb="s24"
+              flexDirection="row"
+              alignItems="center"
+              onPress={goBack}
+              gap="s8">
               <Icon name="arrowLeft" color="primary" />
               <Text semiBold>Voltar</Text>
             </TouchableOpacityBox>
